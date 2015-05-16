@@ -5,6 +5,16 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'home#index'
 
+  get '/tpcchjslvqncmjcxkbcpmese' => 'tpcchjslvqncmjcxkbcpmese#index'
+  get '/tpcchjslvqncmjcxkbcpmese/all'
+  get '/tpcchjslvqncmjcxkbcpmese/show'
+  post 'tpcchjslvqncmjcxkbcpmese/create'
+  post 'tpcchjslvqncmjcxkbcpmese/delete'
+  post 'tpcchjslvqncmjcxkbcpmese/up'
+  post 'tpcchjslvqncmjcxkbcpmese/down'
+
+  get ':id' => 'home#quiz'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

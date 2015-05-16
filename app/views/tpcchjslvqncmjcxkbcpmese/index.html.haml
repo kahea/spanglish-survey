@@ -1,0 +1,60 @@
+ADD QUESTION
+%div
+    = form_tag 'tpcchjslvqncmjcxkbcpmese/create', multipart: true, method: :post do 
+        = text_area_tag "text", nil, class: 'my-area'
+
+        %p
+        = label_tag "pic"
+        = file_field_tag "file"
+
+        %p
+        Options
+        %p
+        = label_tag "A"
+        = text_field_tag "a", nil, class: 'my-input'
+        %p
+        = label_tag "B"
+        = text_field_tag "b", nil, class: 'my-input'
+        %p
+        = label_tag "C"
+        = text_field_tag "c", nil, class: 'my-input'
+        %p
+        = label_tag "D"
+        = text_field_tag "d", nil, class: 'my-input'
+
+
+        %p
+        = submit_tag "Submit", :class => 'btn btn-default'
+
+%p
+QUESTIONS
+%p
+- @questions.each do |question|
+    = question.order
+    = question.text
+    = link_to 'up', tpcchjslvqncmjcxkbcpmese_up_path(question: question), method: 'post'
+    = link_to 'down', tpcchjslvqncmjcxkbcpmese_down_path(question: question), method: 'post'
+    = link_to 'del', tpcchjslvqncmjcxkbcpmese_delete_path(question: question), method: 'post'
+    %br
+    - if question.pic.exists?
+        = image_tag question.pic.url, size: '100x100'
+    %br
+    - if question.multiple_choice
+        %li
+            - if question.a
+                %ul
+                    A.
+                    = question.a
+            - if question.b
+                %ul
+                    B. 
+                    = question.b
+            - if question.b
+                %ul
+                    C.
+                    = question.c
+            - if question.b
+                %ul
+                    D.
+                    = question.d
+    %p

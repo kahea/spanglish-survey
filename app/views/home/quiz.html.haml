@@ -1,0 +1,41 @@
+QUIZ
+%p
+
+- @questions.each do |question|
+    = question.order.to_s + '.'
+    = question.text
+    %br
+    %li
+        %ul
+            - if question.pic.exists?
+                = image_tag question.pic.url, size: '100x100'
+    - if question.multiple_choice
+        / get answer here use to place select tag
+
+        %li
+            - if question.a
+                %ul
+                    = radio_button_tag 'foo', 'a', false, onclick: 'alert("hi")'
+                    A.
+                    = question.a
+            - if question.b
+                %ul
+                    = radio_button_tag 'foo', 'b', true
+                    B. 
+                    = question.b
+            - if question.b
+                %ul
+                    = radio_button_tag 'foo', 'c', false
+                    C.
+                    = question.c
+            - if question.b
+                %ul
+                    = radio_button_tag 'foo', 'd', false
+                    D.
+                    = question.d
+    %script
+        $("foo_bar").on("click", "alert('hi');");
+
+    %p
+    %br
+    %br

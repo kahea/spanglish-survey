@@ -1,0 +1,5 @@
+All users
+%p
+- User.all.each do |user|
+    = user.id
+    = link_to user.password, "/" + user.password

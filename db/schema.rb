@@ -23,21 +23,28 @@ ActiveRecord::Schema.define(version: 20150513220615) do
   end
 
   create_table "questions", force: :cascade do |t|
-    t.string   "text_spanish",    null: false
-    t.string   "text_english",    null: false
-    t.string   "pic_url"
+    t.integer  "order"
+    t.string   "text"
+    t.string   "text_spanish"
+    t.string   "text_english"
     t.boolean  "multiple_choice"
-    t.string   "option_a"
-    t.string   "option_b"
-    t.string   "option_c"
-    t.string   "option_d"
-    t.string   "option_e"
-    t.string   "option_f"
-    t.string   "option_g"
-    t.string   "option_h"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.string   "a"
+    t.string   "b"
+    t.string   "c"
+    t.string   "d"
+    t.string   "e"
+    t.string   "f"
+    t.string   "g"
+    t.string   "h"
+    t.string   "pic_file_name"
+    t.string   "pic_content_type"
+    t.integer  "pic_file_size"
+    t.datetime "pic_updated_at"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
+
+  add_index "questions", ["order"], name: "index_questions_on_order"
 
   create_table "users", force: :cascade do |t|
     t.string   "password"

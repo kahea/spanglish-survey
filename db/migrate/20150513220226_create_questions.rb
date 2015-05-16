@@ -1,20 +1,23 @@
 class CreateQuestions < ActiveRecord::Migration
   def change
     create_table :questions do |t|
-        t.string        :text_spanish, null: false
-        t.string        :text_english, null: false
-        t.string        :pic_url
-        t.boolean     :multiple_choice
-        t.string        :option_a
-        t.string        :option_b
-        t.string        :option_c
-        t.string        :option_d
-        t.string        :option_e
-        t.string        :option_f
-        t.string        :option_g
-        t.string        :option_h
+        t.integer          :order
+        t.string            :text
+        t.string            :text_spanish
+        t.string            :text_english
+        t.boolean         :multiple_choice
+        t.string            :a
+        t.string            :b
+        t.string            :c
+        t.string            :d
+        t.string            :e
+        t.string            :f
+        t.string            :g
+        t.string            :h
+        t.attachment    :pic
 
       t.timestamps null: false
     end
+    add_index :questions, :order
   end
 end
