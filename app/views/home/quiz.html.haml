@@ -11,31 +11,32 @@ QUIZ
                 = image_tag question.pic.url, size: '100x100'
     - if question.multiple_choice
         / get answer here use to place select tag
+        - if a = User.find(@user.id).answers.find_by_question_id(question.id)
+            - answer = a.choice
+        - else
+            - answer = 'z'
 
         %li
             - if question.a
                 %ul
-                    = radio_button_tag 'foo', 'a', false, onclick: 'alert("hi")'
+                    = radio_button_tag question.id.to_s, 'a', answer == 'a', onclick: "choose('#{@user.id}' , '#{question.id}', 'a')"
                     A.
                     = question.a
             - if question.b
                 %ul
-                    = radio_button_tag 'foo', 'b', true
+                    = radio_button_tag question.id.to_s, 'b', answer == 'b', onclick: "choose('#{@user.id}' , '#{question.id}', 'b')"
                     B. 
                     = question.b
             - if question.b
                 %ul
-                    = radio_button_tag 'foo', 'c', false
+                    = radio_button_tag question.id.to_s, 'c', answer == 'c', onclick: "choose('#{@user.id}' , '#{question.id}', 'c')"
                     C.
                     = question.c
             - if question.b
                 %ul
-                    = radio_button_tag 'foo', 'd', false
+                    = radio_button_tag question.id.to_s, 'd', answer == 'd', onclick: "choose('#{@user.id}' , '#{question.id}', 'd')"
                     D.
                     = question.d
-    %script
-        $("foo_bar").on("click", "alert('hi');");
-
     %p
     %br
     %br

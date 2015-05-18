@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   post 'tpcchjslvqncmjcxkbcpmese/down'
 
   get ':id' => 'home#quiz'
+  post 'answer/:id/:question/:answer' => 'home#answer'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
