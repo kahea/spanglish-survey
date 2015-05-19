@@ -17,22 +17,22 @@ QUIZ
             - answer = 'z'
 
         %li
-            - if question.a
+            - if question.a != ""
                 %ul
                     = radio_button_tag question.id.to_s, 'a', answer == 'a', onclick: "choose('#{@user.id}' , '#{question.id}', 'a')"
                     A.
                     = question.a
-            - if question.b
+            - if question.b != ""
                 %ul
                     = radio_button_tag question.id.to_s, 'b', answer == 'b', onclick: "choose('#{@user.id}' , '#{question.id}', 'b')"
                     B. 
                     = question.b
-            - if question.b
+            - if question.c != ""
                 %ul
                     = radio_button_tag question.id.to_s, 'c', answer == 'c', onclick: "choose('#{@user.id}' , '#{question.id}', 'c')"
                     C.
                     = question.c
-            - if question.b
+            - if question.d != ""
                 %ul
                     = radio_button_tag question.id.to_s, 'd', answer == 'd', onclick: "choose('#{@user.id}' , '#{question.id}', 'd')"
                     D.
